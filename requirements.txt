@@ -1,0 +1,9 @@
+Flask
+Flask-Session
+Flask-SQLAlchemy
+Flask-Login
+Flask-WTF
+Flask-Bcrypt
+sqlalchemy
+wtforms
+gunicorn
