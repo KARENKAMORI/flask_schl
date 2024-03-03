@@ -30,17 +30,9 @@ login_manager.login_view = "login"
 def load_user(lecturer_id):
     return Lecturer.query.get(int(lecturer_id))
 
-@login_manager.user_loader
-def load_user(student_id):
-    return Student.query.get(int(student_id))
+# @login_manager.user_loader
 
 # database table
-
-# student
-class Student(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), nullable=False, unique=True)
-    password = db.Column(db.String(80), nullable=False)
 
 # lecturer table
 class Lecturer(db.Model, UserMixin):
@@ -109,7 +101,6 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         lecturer = Lecturer.query.filter_by(username=form.username.data).first() # check if user exists
-        student = Student.query.filter_by(username=form.username.data).first()
         session['username'] = form.username.data
         # If they are, check their password hash
         if lecturer:
@@ -117,13 +108,6 @@ def login():
                 session["username"] = form.username.data
                 login_user(lecturer)
                 return redirect(url_for('lecturer'))
-        elif student:
-            if bcrypt.check_password_hash(student.password, form.password.data):
-                session["username"] = form.username.data
-                login_user(student)
-                return redirect(url_for('student'))
-        else:
-            return f"User Not found"
     return render_template('login.html', form=form)
 
 @app.route("/logout", methods=['GET', 'POST'])
@@ -143,16 +127,6 @@ def lecturer():
     else:
         return "Not logged in"
 
-# lecturer dashboard
-@app.route("/student", methods=['GET', 'POST'])
-@login_required
-def student():
-    username = session.get('username')
-    if username:
-        return render_template('student.html', username=username)
-    else:
-        return "Not logged in"
-
 # SIGNUP
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
@@ -161,13 +135,7 @@ def signup():
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data)
         new_user = Lecturer(username=form.username.data, password=hashed_password)
-        std_user=form.username.data
-        if reg_validator(std_user):
-            new_student = Student(username=std_user, password=hashed_password)
-            if new_student:
-                db.session.add(new_student)
-        else:
-            db.session.add(new_user)
+        db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
 
@@ -257,3 +225,4 @@ def about():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
