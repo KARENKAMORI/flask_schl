@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}
+    <script src="/static/confirm.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <article class="grading">
+            <h2>EXAMINATION GRADING</h2>
+            <form action="/grading" method="post">
+                <p>Registration number: </p>
+                <input autocomplete="off" autofocus type="text" name="reg_no" id="regNo">
+                <p>CAT Score: </p>
+                <p><input type="number" name="cat" id=""></p>
+                <p>Finals Score: </p>
+                <p><input type="number" name="finals" id=""></p>
+                <button>submit</button>
+                <a href="{{url_for('lecturer')}}">Back</a>
+            </form>
+        </article>
+    </div>
+{% endblock %}

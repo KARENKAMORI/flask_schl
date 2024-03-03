@@ -1,0 +1,24 @@
+<!-- FORM TO GET MORE LECTURER INFORMATION -->
+
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <article class="grading">
+            <h2>Lecturer Unit Registration</h2>
+            <form action="/lecturer_information" method="post">
+                <p>NATIONAL ID: </p>
+                <input autocomplete="off" autofocus type="text" name="national_id" id="">
+                <p>PHONE NUMBER: </p>
+                <input autocomplete="off" type="text" name="phone_number" id="">
+                <p>EMAIL: </p>
+                <input autocomplete="off" type="text" name="email" id="">
+                <p>GENDER: </p>
+                <input autocomplete="off" type="text" name="gender" id="">
+                <p>BIRTH DAY: </p>
+                <input autocomplete="off" type="date" name="birth_date" id="">
+                <p><input type="submit" value="submit"></p>
+            </form>
+        </article>
+    </div>
+{% endblock %}

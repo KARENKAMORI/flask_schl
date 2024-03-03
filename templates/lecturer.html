@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <ul class="navig_list">
+        <li><a href="{{url_for('grading')}}">GRADE</a></li>
+        <li><a href="{{url_for('performance_report')}}">Performance Report</a></li>
+        <li><a href="{{url_for('teaching_units')}}">Unit Registrarion</a></li>
+        <li><a href="{{url_for('lecturer_information')}}">Update Profile</a></li> 
+        <li><a href="{{url_for('logout')}}">Logout</a></li>
+    </ul>
+    <h1>Lecturer: {{username}}</h1>
+{% endblock %}

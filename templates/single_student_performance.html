@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+    <article class="grading">
+    <h2>{{performance.reg_no}}</h2>
+        CAT: {{performance.cat}}, Finals: {{performance.finals}}, Total: {{performance.total}}, Grade: {{performance.final_grade}} <br>
+    </article>
+</div>
+{% endblock %}

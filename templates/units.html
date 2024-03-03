@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <article class="grading">
+            <h2>Lecturer Unit Registration</h2>
+            <form action="/teaching_units" method="post">
+                <p>Unit code: </p>
+                <input autocomplete="off" autofocus type="text" name="unit_code" id="">
+                <p>Unit name: </p>
+                <input autocomplete="off" type="text" name="unit_name" id="">
+                <p><input type="submit" value="submit"></p>
+                <p><button><a href="{{url_for('lecturer')}}">Back</a></button></p>
+            </form>
+        </article>
+    </div>
+{% endblock %}

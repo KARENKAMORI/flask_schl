@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<main>
+    <article>
+        <form action="/single_student_performance" method="post">
+            <input autocomplete="off" type="text" name="reg_no" placeholder="Registration number" id="">
+            <input type="submit" value="Search">
+        </form>
+        <button><a href="{{url_for('lecturer')}}">Back</a></button>
+    </article>
+    <div class="wrapper">
+        <table>
+            <caption>Student performance Report</caption>
+            <tr>
+                <th>Registration</th>
+                <th>CAT</th>
+                <th>Finals</th>
+                <th>Total</th>
+                <th>Grade</th>
+            </tr>
+
+            {% for perform in performance %}
+            <tr>
+                <td data-cell="Registration">{{perform.reg_no}}</td>
+                <td data-cell="cat">{{perform.cat}}</td>
+                <td data-cell="finals">{{perform.finals}}</td>
+                <td data-cell="total">{{perform.total}}</td>
+                <td data-cell="grade">{{perform.final_grade}}</td>
+            </tr><br>
+            {% endfor %}
+        </table>
+    </div>
+</main>
+{% endblock %}
