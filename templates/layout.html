@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     {% block title %}{% endblock %}
 </head>
 <body>
-    {% block body %}
-    {% endblock %}
+    <section>
+        <input type="checkbox" id="check">
+        <header>
+            <h2><a href="#" class="logo">Logo</a></h2>
+            <div class="navigation">
+                <a href="{{url_for('home')}}">Home</a>
+                <a href="{{url_for('about')}}">About</a>
+                <a href="#">Info</a>
+                <a href="{{url_for('login')}}">Login</a>
+                <a href="{{url_for('logout')}}">Logout</a>
+            </div>
+            <label for="check">
+                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-x"></i>
+            </label>
+        </header>
+        {% block body %}
+        {% endblock %}
+    </section>
 </body>
 </html>

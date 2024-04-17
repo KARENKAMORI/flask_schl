@@ -8,72 +8,224 @@
     min-height: 100vh;
 }
 
-h2{
-    margin: 1.25cm 0 0;
+/* HOME: LANDING PAGE */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: sans-serif;
 }
 
-/* NAVIGATION BAR */
-header{
-    padding: 0;
-    background: #fff;
-    position: fixed;
-    left: 0;
-    top:0;
-    bottom: 0;
+section{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    background: url(/static/school.jpg)no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
-.nav{
-    padding: 2px;
-    flex-grow: 1; 
-}
-
-.nav__list{
-    height: 100%;
-    margin: 2em 0;
-    padding: 2em;
-    box-shadow: 0 0 2rem -0.5rem rgba(0, 0, 0, 2);
-    list-style: none;
+header{
+    position: relative;
+    top:0;
+    width: 100%;
+    padding: 30px 100px;
     display: flex;
-    gap: 1em;
-    background: purple;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.navig_list{
-    height: 100%;
-    margin: 2em 0;
-    padding: 2em;
-    box-shadow: 0 0 2rem -0.5rem rgba(0, 0, 0, 2);
-    list-style: none;
+header .logo{
+    position: relative;
+    color: #000;
+    font-size: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+header .navigation a{
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 2px 15px;
+    border-radius: 20px;
+    transition-property: background;
+}
+
+header .navigation a:not(:last-child){
+    margin-right: 30px;
+}
+
+header .navigation a:hover{
+    background: rgb(105, 105, 172);
+}
+
+.content{
+    max-width: 500px;
+    margin: 60px 100px;
+}
+
+.content .info h2{
+    color: #226A80;
+    font-size: 55px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 60px;
+    margin-bottom: 30px;
+}
+
+.content .info h2 span{
+    color: blueviolet;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.content .info p{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.content .info-btn{
+    color: #fff;
+    background: #226A80;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+    transition-property: background;
+}
+
+.media-icons{
     display: flex;
-    /* flex-direction: column; */
-    gap: 1em;
-    background: purple;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    transition: 0.3s;
+    transition-property: transform;
 }
 
-.nav__list a, .navig_list a{
-    color: var(--clr-primary);
+.media-icons a{
+    position: relative;
+    color: #111;
+    font-size: 25px;
 }
 
-.nav__list a:hover,
-.navig_list a:hover,
-.nav__list a:focus
-.navig_list a:focus {
-    color: var(--clr-body);
+.media-icons a:not(:last-child){
+    margin-right: 60px;
 }
 
-.nav__list li:nth-of-type(1){
-    margin-top:auto;
+.media-icons a:hover{
+    transform: scale(1.5);
 }
 
-/* .nav__list li:nth-of-type(2){
-    margin-top: auto;
+label{
+    display: none;
 }
 
-.navig_list li:nth-of-type(3){
-    margin-top: auto;
-} */
+#check{
+    z-index: 3;
+    display: none;
+}
+
+@media (max-width: 960px){
+    header .navigation{
+        display: none;
+    }
+    label{
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+        transition: 0.3s;
+        transition-property: color;
+    }
+    label:hover{
+        color: #5211a7;
+    }
+    label .fa-x{
+        display: none;
+    }
+    #check:checked ~ header .navigation{
+        z-index: 2;
+        position: fixed;
+        background: rgba(144, 223, 255, 0.9);
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #check:checked ~ header .navigation a{
+        font-weight: 700;
+        margin-right: 0;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+    }
+
+    #check:checked ~ header label .fa-bars{
+        display: none;
+    }
+
+    #check:checked ~ header label .fa-x{
+        z-index: 2;
+        display:block;
+        position: fixed;
+    }
+
+    label .fa-bars{
+        position: absolute;
+    }
+
+    header .logo{
+        position: absolute;
+        bottom: -6px;
+    }
+
+    .content .info h2{
+        font-size: 45px;
+        line-height: 50px;
+    }
+
+    .content .info h2 span{
+        font-size: 40px;
+        font-weight: 600;
+    }
+
+    .content .info p{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 560px){
+    .content .info h2{
+        font-size: 35px;
+        line-height: 40px;
+    }
+
+    .content .info h2 span{
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .content .info p{
+        font-size: 14px;
+    }
+}
+
 
 /* ABOUT PAGE */
 .leadership{
